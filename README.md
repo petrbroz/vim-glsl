@@ -19,6 +19,10 @@ Clone this repo in your Vim's package folder:
    git clone git://github.com/petrbroz/vim-glsl.git
 ```
 
+## Screenshots
+
+![Syntax Highlighting](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/screenshot.png)
+
 ## License
 
 Distributed under the same terms as Vim. See `:help license`.
