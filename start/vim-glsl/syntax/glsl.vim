@@ -104,10 +104,11 @@ highlight link glslcomment Comment
 
 " Directives {{{
 
-syntax match glsldefine "\v\#define.*$"
-syntax match glsldefine "\v\#ifn?def.*$"
-syntax match glsldefine "\v\#endif.*$"
-syntax match glslinclude "\v\#include.*$"
+syntax match glsldefine "\v\# ?define.*$"
+syntax match glsldefine "\v\# ?if.*$"
+syntax match glsldefine "\v\# ?else.*$"
+syntax match glsldefine "\v\# ?endif.*$"
+syntax match glslinclude "\v\# ?include.*$"
 
 highlight link glsldefine Define
 highlight link glslinclude Include
