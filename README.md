@@ -19,9 +19,22 @@ Clone this repo in your Vim's package folder:
    git clone git://github.com/petrbroz/vim-glsl.git
 ```
 
-## Screenshots
+## Features
 
-![Syntax Highlighting](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/screenshot.png)
+#### Syntax highlighting
+
+![Syntax highlighting](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/syntax.png)
+
+#### Code folding (indent-based)
+
+![Code folding](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/folding.gif)
+
+#### Go to shader chunk
+
+With cursor inside the brackets of the `#include<foo>` directive, `gf` will try to find
+_foo.glsl_, _foo.vs_, or _foo.fs_ in the subtree of the current working directory.
+
+![Go to chunk](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/gotochunk.gif)
 
 ## License
 
