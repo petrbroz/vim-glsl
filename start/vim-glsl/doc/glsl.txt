@@ -1,0 +1,10 @@
+*glsl.txt* Plugin for the glsl shader language
+
+Author: Petr Broz <https://github.com/petrbroz>
+License: Same as Vim's (see |license|)
+
+================================================================================
+INTRODUCTION                                                          *vim-glsl*
+
+This plugin will automatically provide syntax highlighting for OpenGL ES 1.0
+shader files (files ending with .glsl, .vs, or .fs).
