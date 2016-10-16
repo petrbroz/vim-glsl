@@ -2,6 +2,22 @@ if exists("b:current_syntax")
     finish
 endif
 
+" Literals {{{
+
+syntax keyword glslboolean true false
+
+syntax match glslintger "\<\(0\|[1-9]\d*\)"
+syntax match glslintger "\<0[xX]\x\+"
+syntax match glslintger "\<0\o\+"
+
+syntax match glslfloat "\<\d*\.\d*\([eE][+-]\=\d\+\)\="
+
+highlight link glslboolean Boolean
+highlight link glslintger Integer
+highlight link glslfloat Float
+
+" }}}
+
 " Keywords {{{
 
 syntax keyword glslconditional if else
@@ -9,7 +25,7 @@ syntax keyword glslrepeat break continue do for while
 syntax keyword glsllabel goto switch default
 syntax keyword glslstructure struct
 
-syntax keyword glsltype float int void bool true false
+syntax keyword glsltype float int void bool
 syntax keyword glsltype mat2 mat3 mat4
 syntax keyword glsltype vec2 vec3 vec4 ivec2 ivec3 ivec4 bvec2 bvec3 bvec4
 syntax keyword glsltype sampler2D samplerCube
@@ -67,7 +83,12 @@ syntax match glsloperator "<<"
 syntax match glsloperator "&&"
 syntax match glsloperator "||"
 
+" Swizzels
+syntax match glslswizzle "\.[xyzw]\{1,4\}\>"
+syntax match glslswizzle "\.[rgba]\{1,4\}\>"
+
 highlight link glsloperator Operator
+highlight link glslswizzle SpecialChar
 
 " }}}
 
@@ -114,7 +135,5 @@ highlight link glsldefine Define
 highlight link glslinclude Include
 
 " }}}
-
-" TODO: literals
 
 let b:current_syntax = "glsl"
