@@ -1,0 +1,326 @@
+*glsl-spec.txt* glsl specs formatted as vim docs
+
+                    OpenGL ES Shading Language specification
+                             Language Version: 1.00
+      Based on https://www.khronos.org/files/opengles_shading_language.pdf
+
+================================================================================
+CONTENTS                                               *GlslSpecContents* *glsl*
+
+    1. Built-in Variables ..................... |GlslSpecVars|
+    2. Built-in Constants ..................... |GlslSpecConsts|
+    3. Built-in Functions ..................... |GlslSpecFuncs|
+        3.1. Angle and Trigonometry Functions . |GlslSpecFuncsTrigonometry|
+        3.2. Exponential Functions ............ |GlslSpecFuncsExponential|
+        3.3. Geometric Functions .............. |GlslSpecFuncsGeometric|
+        3.4. Matrix Functions ................. |GlslSpecFuncsMatrix|
+        3.5. Vector Relational Functions ...... |GlslSpecFuncsRelational|
+        3.6. Texture Lookup Functions ......... |GlslSpecFuncsLookup|
+
+================================================================================
+Built-in Variables                                                *GlslSpecVars*
+
+highp vec4 gl_Position                                             *gl_Position*
+    Used for writing the homogeneous vertex position.
+    Only available in vertex shader. 
+
+mediump float gl_PointSize                                        *gl_PointSize*
+    Used for writing the size of the rasterized point.
+    Only available in vertex shader. 
+
+mediump vec4 gl_FragCoord                                         *gl_FragCoord*
+    Read-only variable available in fragment shader. Holds the window relative
+    coordinates x, y, z, and 1/w for the fragment.
+
+bool gl_FrontFacing                                             *gl_FrontFacing*
+    Read-only variable available in fragment shader. Set to true if the fragment
+    belongs to a front-facing primitive.
+
+mediump vec4 gl_FragColor                                         *gl_FragColor*
+    Specifies the fragment color that will be used by the subsequent fixed
+    functionality pipeline. Used in fragment shader. 
+
+mediump vec4 gl_FragData[n]                                        *gl_FragData*
+    Specifies the fragment data that will be used by the subsequent fixed
+    functionality pipeline for data n. Used in fragment shader.
+
+mediump vec2 gl_PointCoord                                       *gl_PointCoord*
+    Read-only variable available in fragment shader. Holds two-dimensional
+    coordinates indicating where within a point primitive the current fragment
+    is located.
+
+================================================================================
+Built-in Constants                                              *GlslSpecConsts*
+
+const mediump int gl_MaxVertexAttribs                      *gl_MaxVertexAttribs*
+    Maximum number of vertex attributes. Must be at least 8.
+
+const mediump int gl_MaxVertexUniformVectors        *gl_MaxVertexUniformVectors*
+    Maximum number of uniform vectors in vertex shader. Must be at least 128.
+
+const mediump int gl_MaxVaryingVectors                    *gl_MaxVaryingVectors*
+    Maximum number of varying vectors. Must be at least 8.
+
+const mediump int gl_MaxVertexTextureImageUnits  *gl_MaxVertexTextureImageUnits*
+    Maximum number of textures in vertex shader.
+
+const mediump int gl_MaxCombinedTextureImageUnits *gl_MaxCombinedTextureImageUnits*
+    Maximum number of textures in both vertex and fragment shader.
+    Must be at least 8.
+
+const mediump int gl_MaxTextureImageUnits              *gl_MaxTextureImageUnits*
+    Maximum number of textures in fragment shader. Must be at least 8.
+
+const mediump int gl_MaxFragmentUniformVectors    *gl_MaxFragmentUniformVectors*
+    Maximum number of uniform vectors in fragment shader. Must be at least 16.
+
+const mediump int gl_MaxDrawBuffers                          *gl_MaxDrawBuffers*
+    Maximum number of draw buffers. Must be at least 1.
+
+================================================================================
+Built-in Functions                                               *GlslSpecFuncs*
+
+--------------------------------------------------------------------------------
+Angle and Trigonometry Functions                     *GlslSpecFuncsTrigonometry*
+
+radians({degrees})                                                   *radians()*
+    Converts degrees to radians. {degrees} can be float, vec2, vec3 or vec4.
+
+degrees({radians})                                                   *degrees()*
+    Converts radians to degrees. {radians} can be float, vec2, vec3 or vec4.
+
+sin({radians})                                                           *sin()*
+    The standard sine function. {radians} can be float, vec2, vec3 or vec4.
+
+cos({radians})                                                           *cos()*
+    The standard cosine function. {radians} can be float, vec2, vec3 or vec4.
+
+tan({radians})                                                           *tan()*
+    The standard tangent function. {radians} can be float, vec2, vec3 or vec4.
+
+asin({x})                                                               *asin()*
+    Arc sine. Returns an angle whose sine is {x}. The range of values returned
+    by this function is [-pi/2,pi/2], or undefined if |{x}|>1. {x} can be float,
+    vec2, vec3 or vec4.
+
+acos({x})                                                               *acos()*
+    Arc cosine. Returns an angle whose cosine is {x}. The range of values
+    returned by this function is [0,pi], or undefined if |{x}|>1. {x} can be
+    float, vec2, vec3 or vec4.
+
+atan({y}, {x})                                                          *atan()*
+    Arc tangent. Returns an angle whose tangent is {y}/{x}. The signs of {x} and
+    {y} are used to determine what quadrant the angle is in. The range of values
+    returned by this function is [-pi,pi], or undefined if {x} and {y} are 0.
+    {x} and {y} can be float, vec2, vec3 or vec4.
+atan({y_over_x})
+    Arc tangent. Returns an angle whose tangent is {y_over_x}. The range of
+    values returned by this function is [-pi/2,pi/2]. {y_over_x} can be float,
+    vec2, vec3 or vec4.
+
+--------------------------------------------------------------------------------
+Exponential Functions                                 *GlslSpecFuncsExponential*
+
+pow({x}, {y})                                                            *pow()*
+    Returns {x} raised to the {y} power. Results are undefined if {x} < 0, or
+    if {x} = 0 and {y} <= 0. {x} and {y} can be float, vec2, vec3 or vec4.
+
+exp({x})                                                                 *exp()*
+    Natural exponentiation of {x}. {x} can be float, vec2, vec3 or vec4.
+
+log({x})                                                                 *log()*
+    Natural logarithm of {x}. Results are undefined if {x} <= 0. {x} can be
+    float, vec2, vec3 or vec4.
+
+exp2({x})                                                               *exp2()*
+    Returns 2 raised to the {x} power. {x} can be float, vec2, vec3 or vec4.
+
+log2({x})                                                               *log2()*
+    Returns the base 2 logarithm of {x}. Results are undefined if {x} <= 0.
+    {x} can be float, vec2, vec3 or vec4.
+
+sqrt({x})                                                               *sqrt()*
+    Returns the square root of {x}. Results are undefined if {x} < 0. {x} can be
+    float, vec2, vec3 or vec4.
+
+inversesqrt({x})                                                 *inversesqrt()*
+    Returns the inverse square root of {x}. Results are undefined if {x} < 0.
+    {x} can be float, vec2, vec3 or vec4.
+
+--------------------------------------------------------------------------------
+Common Functions                                           *GlslSpecFuncsCommon*
+
+abs({x})                                                                 *abs()*
+    Returns {x} if {x}>=0, otherwise -{x}. {x} can be float, vec2, vec3 or vec4.
+
+sign({x})                                                               *sign()*
+    Returns 1.0 if {x}>0, 0.0 if {x}==0, or -1.0 if {x}<0. {x} can be float,
+    vec2, vec3 or vec4.
+
+floor({x})                                                             *floor()*
+    Returns a value equal to the nearest integer that is less than or equal
+    to {x}. {x} can be float, vec2, vec3 or vec4.
+
+ceil({x})                                                               *ceil()*
+    Returns a value equal to the nearest integer that is greater than or equal
+    to {x}. {x} can be float, vec2, vec3 or vec4.
+
+fract({x})                                                             *fract()*
+    Returns {x} - |floor()| of {x}. {x} can be float, vec2, vec3 or vec4.
+
+mod({x}, {y})                                                            *mod()*
+    Modulus. Returns {x} - {y} * |floor()| of {x}/{y}. {x} can be float, vec2,
+    vec3 or vec4. {y} can be of same type as {x}, or a float.
+
+min({x}, {y})                                                            *min()*
+    Returns {y} if {y} < {x}, otherwise {x}. {x} can be float, vec2, vec3
+    or vec4. {y} can be of same type as {x}, or a float.
+
+max({x}, {y})                                                            *max()*
+    Returns {y} if {y} > {x}, otherwise {x}. {x} can be float, vec2, vec3
+    or vec4. {y} can be of same type as {x}, or a float.
+
+clamp({x}, {minVal}, {maxVal})                                         *clamp()*
+    Returns min(max({x}, {minVal}), {maxVal}). Results are undefined if
+    {minVal}>{maxVal}. {x} can be float, vec2, vec3 or vec4. {minVal} and
+    {maxVal} can be of same type as {x}, or a float.
+
+mix({x}, {y}, {a})                                                       *mix()*
+    Returns the linear blend of {x} and {y}, i.e., {x}*(1-{a})+{y}*{a}. {x} and
+    {y} can be float, vec2, vec3 or vec4. {a} can be of same type as {x} and {y},
+    or a float.
+
+step({edge}, {x})                                                       *step()*
+    Returns 0.0 if {x}<{edge}, otherwise 1.0. {x} can be float, vec2, vec3
+    or vec4. {edge} can be of same type as {x}, or a float.
+
+smoothstep({edge0}, {edge1}, {x})                                 *smoothstep()*
+    Returns 0.0 if {x}<={edge0}, and 1.0 if {x}>={edge1}, and performs smooth
+    Hermite interpolation between 0 and 1 when {edge0}<{x}<{edge1}. Results are
+    undefined if {edge0}>={edge1}. {x} can be float, vec2, vec3 or vec4. {edge0}
+    and {edge1} can be of same type as {x}, or a float.
+
+--------------------------------------------------------------------------------
+Geometric Functions                                     *GlslSpecFuncsGeometric*
+
+length({x})                                                           *length()*
+    Returns the length of {x}. {x} can be float, vec2, vec3 or vec4.
+
+distance({p0}, {p1})                                                *distance()*
+    Returns the distance between {p0} and {p1}. {p0} and {p1} can be float,
+    vec2, vec3 or vec4.
+
+dot({x}, {y})                                                            *dot()*
+    Returns the dot product of {x} and {y}. {x} and {y} can be float, vec2, vec3
+    or vec4.
+
+cross({x}, {y})                                                        *cross()*
+    Returns the cross product of {x} and {y}. {x} and {y} can be float, vec2,
+    vec3 or vec4.
+
+normalize({x})                                                     *normalize()*
+    Returns a vector in the same direction as {x} but with a length of 1.
+    {x} can be float, vec2, vec3 or vec4.
+
+faceforward({N}, {I}, {Nref})                                    *faceforward()*
+    If dot({Nref},{I})<0, return {N}, otherwise return -{N}. {N}, {I} and {Nref}
+    can be float, vec2, vec3 or vec4.
+
+reflect({I}, {N})                                                    *reflect()*
+    For the incident vector {I} and surface orientation {N}, returns the
+    reflection direction. {N} must already be normalized in order to achieve
+    the desired result. {N} and {I} can be float, vec2, vec3 or vec4.
+
+refract({I}, {N}, {eta})                                             *refract()*
+    For the incident vector {I} and surface normal {N}, and the ratio of indices
+    of refraction {eta}, return the refraction vector. {N} must already be
+    normalized in order to achieve the desired result. {N} and {I} can be float,
+    vec2, vec3 or vec4. {eta} must be a float.
+
+--------------------------------------------------------------------------------
+Matrix Functions                                           *GlslSpecFuncsMatrix*
+
+matrixCompMult({x}, {y})                                      *matrixCompMult()*
+    Multiply matrix {x} by matrix {y} compoennt-wise. Note: to get linear
+    algebraic matrix multiplication, use the * operator. {x} and {y} can be
+    mat2, mat3 or mat4.
+
+--------------------------------------------------------------------------------
+Vector Relational Functions                            *GlslSpecFuncsRelational*
+
+lessThan({x}, {y})                                                  *lessThan()*
+    Returns the component-wise compare of {x}<{y}. {x} and {y} can be one of
+    the following types: vec2, vec3, vec4, ivec2, ivec3, ivec4. The type of
+    the resulting value is bvec2, bvec3 or bvec4.
+
+lessThanEqual({x}, {y})                                        *lessThanEqual()*
+    Returns the component-wise compare of {x}<={y}. {x} and {y} can be one of
+    the following types: vec2, vec3, vec4, ivec2, ivec3, ivec4. The type of
+    the resulting value is bvec2, bvec3 or bvec4.
+
+greaterThan({x}, {y})                                            *greaterThan()*
+    Returns the component-wise compare of {x}>{y}. {x} and {y} can be one of
+    the following types: vec2, vec3, vec4, ivec2, ivec3, ivec4. The type of
+    the resulting value is bvec2, bvec3 or bvec4.
+
+greaterThanEqual({x}, {y})                                  *greaterThanEqual()*
+    Returns the component-wise compare of {x}>={y}. {x} and {y} can be one of
+    the following types: vec2, vec3, vec4, ivec2, ivec3, ivec4. The type of
+    the resulting value is bvec2, bvec3 or bvec4.
+
+equal({x}, {y})                                                        *equal()*
+    Returns the component-wise compare of {x}=={y}. {x} and {y} can be one of
+    the following types: vec2, vec3, vec4, ivec2, ivec3, ivec4. The type of
+    the resulting value is bvec2, bvec3 or bvec4.
+
+notEqual({x}, {y})                                                  *notEqual()*
+    Returns the component-wise compare of {x}!={y}. {x} and {y} can be one of
+    the following types: vec2, vec3, vec4, ivec2, ivec3, ivec4. The type of
+    the resulting value is bvec2, bvec3 or bvec4.
+
+any({x})                                                                 *any()*
+    Returns true if any component of {x} is true. {x} can be bvec2, bvec3 or
+    bvec4.
+
+all({x})                                                                 *all()*
+    Returns true if all components of {x} is true. {x} can be bvec2, bvec3 or
+    bvec4.
+
+not({x})                                                                 *not()*
+    Returns the component-wise logical complement of {x}. {x} can be bvec2,
+    bvec3 or bvec4.
+
+--------------------------------------------------------------------------------
+Texture Lookup Functions                                   *GlslSpecFuncsLookup*
+
+texture2D({sampler}, {coord} [, {bias}])                           *texture2D()*
+    Uses the texture coordinate {coord} to do a texture lookup in the 2D texture
+    currently bound to {sampler}. {coord} must be a vec2. {bias}, if present,
+    must be a float.
+
+texture2DProj({sampler}, {coord} [, {bias}])                   *texture2DProj()*
+    Uses the texture coordinate {coord} to do a texture lookup in the 2D texture
+    currently bound to {sampler}. The texture coordinate is divided by the last
+    component of {coord}. {coord} can be vec3 or vec4. {bias}, if present, must
+    be a float.
+
+texture2DLod({sampler}, {coord}, {lod})                         *texture2DLod()*
+    Uses the texture coordinate {coord} to do a texture lookup in the 2D texture
+    currently bound to {sampler}. {coord} must be a vec2. {lod} must be a float.
+
+texture2DProjLod({sampler}, {coord}, {lod})                 *texture2DProjLod()*
+    Uses the texture coordinate {coord} to do a texture lookup in the 2D texture
+    currently bound to {sampler}. The texture coordinate is divided by the last
+    component of {coord}. {coord} can be vec3 or vec4. {lod} must be a float.
+
+textureCube({sampler}, {coord} [, {bias}])                       *textureCube()*
+    Uses the texture coordinate {coord} to do a texture lookup in the cube map
+    texture currently bound to {sampler}. The direction of {coord} is used to
+    select which face to do a two-dimensional texture lookup in. {coord} must
+    be a vec3. {bias}, if present, must be a float.
+
+textureCubeLod({sampler}, {coord}, {lod})                     *textureCubeLod()*
+    Uses the texture coordinate {coord} to do a texture lookup in the cube map
+    texture currently bound to {sampler}. The direction of {coord} is used to
+    select which face to do a two-dimensional texture lookup in. {coord} must
+    be a vec3. {lod} must be a float.

@@ -21,6 +21,12 @@ Clone this repo in your Vim's package folder:
 
 ## Features
 
+#### Reference documentation
+
+The built-in variables, constants, and functions of OpenGL ES GLSL are documented
+using vim's docs format, so you can look up the documentation using something like
+`:h texture2D()`, or just hit `K` while the cursor is on the function.
+
 #### Syntax highlighting
 
 ![Syntax highlighting](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/syntax.png)
