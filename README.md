@@ -14,9 +14,9 @@ Supported file extensions: `.glsl`, `.vs`, `.fs`
 
 Clone this repo in your Vim's package folder:
 ```bash
-   mkdir -p ~/.vim/pack
-   cd ~/.vim/pack
-   git clone git://github.com/petrbroz/vim-glsl.git
+mkdir -p ~/.vim/pack
+cd ~/.vim/pack
+git clone git://github.com/petrbroz/vim-glsl.git
 ```
 
 ## Features
@@ -26,6 +26,17 @@ Clone this repo in your Vim's package folder:
 The built-in variables, constants, and functions of OpenGL ES GLSL are documented
 using vim's docs format, so you can look up the documentation using something like
 `:h texture2D()`, or just hit `K` while the cursor is on the function.
+
+#### Autocomplete
+
+The same reference documentation mentioned above is used to provide the user-defined
+autocompletion. Hit `ctrl-x` `ctrl-u` while in insert mode to invoke it. If you want
+to use omnicompletion instead (`ctrl-x` `ctrl-o`), add the following line to your
+_.vimrc_ file:
+
+```vim
+set omnifunc=glsl#CompleteFunc
+```
 
 #### Syntax highlighting
 

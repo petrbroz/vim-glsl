@@ -108,15 +108,14 @@ acos({x})                                                               *acos()*
     returned by this function is [0,pi], or undefined if |{x}|>1. {x} can be
     float, vec2, vec3 or vec4.
 
-atan({y}, {x})                                                          *atan()*
+atan({y} [, {x}])                                                          *atan()*
     Arc tangent. Returns an angle whose tangent is {y}/{x}. The signs of {x} and
     {y} are used to determine what quadrant the angle is in. The range of values
     returned by this function is [-pi,pi], or undefined if {x} and {y} are 0.
     {x} and {y} can be float, vec2, vec3 or vec4.
-atan({y_over_x})
-    Arc tangent. Returns an angle whose tangent is {y_over_x}. The range of
-    values returned by this function is [-pi/2,pi/2]. {y_over_x} can be float,
-    vec2, vec3 or vec4.
+    If only one parameter is present, returns an angle whose tangent is {y}.
+    The range of values returned by this function is [-pi/2,pi/2]. {y} can be
+    float, vec2, vec3 or vec4.
 
 --------------------------------------------------------------------------------
 Exponential Functions                                 *GlslSpecFuncsExponential*
