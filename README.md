@@ -6,6 +6,8 @@ for standard OpenGL ES 1.0 shaders, and for additional directives used in
 
 Supported file extensions: `.glsl`, `.vs`, `.fs`
 
+![Demo](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/screencast.gif?raw=true)
+
 ## Requirements
 
 - [Vim 8](https://github.com/vim/vim/blob/master/runtime/doc/version8.txt)
@@ -20,6 +22,12 @@ git clone git://github.com/petrbroz/vim-glsl.git
 ```
 
 ## Features
+
+#### Syntax highlighting
+
+#### Code folding
+
+Based on cindent.
 
 #### Reference documentation
 
@@ -38,20 +46,10 @@ _.vimrc_ file:
 set omnifunc=glsl#CompleteFunc
 ```
 
-#### Syntax highlighting
-
-![Syntax highlighting](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/syntax.png)
-
-#### Code folding (indent-based)
-
-![Code folding](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/folding.gif)
-
 #### Go to shader chunk
 
 With cursor inside the brackets of the `#include<foo>` directive, `gf` will try to find
 _foo.glsl_, _foo.vs_, or _foo.fs_ in the subtree of the current working directory.
-
-![Go to chunk](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/gotochunk.gif)
 
 ## License
 
