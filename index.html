@@ -1,36 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="vim-glsl : ">
+    <title>vim-glsl by petrbroz</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>vim-glsl</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>vim-glsl</h1>
+        <p></p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/petrbroz/vim-glsl">View on GitHub</a>
+        <p class="view"><a href="https://github.com/petrbroz/vim-glsl">View the Project on GitHub <small>petrbroz/vim-glsl</small></a></p>
 
-          <h1 id="project_title">vim-glsl</h1>
-          <h2 id="project_tagline"></h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/petrbroz/vim-glsl/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/petrbroz/vim-glsl/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+        <ul>
+          <li><a href="https://github.com/petrbroz/vim-glsl/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/petrbroz/vim-glsl/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/petrbroz/vim-glsl">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
         <h1>
 <a id="glslvim" class="anchor" href="#glslvim" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>glsl.vim</h1>
 
@@ -43,20 +40,25 @@ for standard OpenGL ES 1.0 shaders, and for additional directives used in
 <p><img src="https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/screencast.gif?raw=true" alt="Demo"></p>
 
 <h2>
-<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
-
-<ul>
-<li><a href="https://github.com/vim/vim/blob/master/runtime/doc/version8.txt">Vim 8</a></li>
-</ul>
-
-<h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>Clone this repo in your Vim's package folder:</p>
+<ul>
+<li>Using <a href="https://github.com/tpope/vim-pathogen">pathogen</a>? Open your terminal and run:</li>
+</ul>
 
-<div class="highlight highlight-source-shell"><pre>mkdir -p <span class="pl-k">~</span>/.vim/pack
-<span class="pl-c1">cd</span> <span class="pl-k">~</span>/.vim/pack
-git clone git://github.com/petrbroz/vim-glsl.git</pre></div>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> <span class="pl-k">~</span>/.vim/bundle <span class="pl-k">&amp;&amp;</span> git clone git://github.com/petrbroz/vim-glsl.git</pre></div>
+
+<ul>
+<li>Using <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a>? Open your <em>.vimrc</em> and add:</li>
+</ul>
+
+<div class="highlight highlight-source-viml"><pre><span class="pl-c1">Plugin</span> <span class="pl-s"><span class="pl-pds">'</span>petrbroz/vim-glsl<span class="pl-pds">'</span></span></pre></div>
+
+<ul>
+<li>Using <a href="https://github.com/Shougo/neobundle.vim">NeoBundle</a>?  Open your <em>.vimrc</em> and add:</li>
+</ul>
+
+<div class="highlight highlight-source-viml"><pre>NeoBundle <span class="pl-s"><span class="pl-pds">'</span>petrbroz/vim-glsl<span class="pl-pds">'</span></span></pre></div>
 
 <h2>
 <a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
@@ -64,10 +66,14 @@ git clone git://github.com/petrbroz/vim-glsl.git</pre></div>
 <h4>
 <a id="syntax-highlighting" class="anchor" href="#syntax-highlighting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax highlighting</h4>
 
+<p>Based on WebGL 1.0 <a href="https://www.khronos.org/registry/webgl/specs/latest/">specs</a>.
+Additionally, <code>#include</code> directives used in <a href="https://github.com/mrdoob/three.js/">three.js</a>
+are also recognized.</p>
+
 <h4>
 <a id="code-folding" class="anchor" href="#code-folding" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code folding</h4>
 
-<p>Based on cindent.</p>
+<p>Simply based on cindent.</p>
 
 <h4>
 <a id="reference-documentation" class="anchor" href="#reference-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reference documentation</h4>
@@ -75,6 +81,11 @@ git clone git://github.com/petrbroz/vim-glsl.git</pre></div>
 <p>The built-in variables, constants, and functions of OpenGL ES GLSL are documented
 using vim's docs format, so you can look up the documentation using something like
 <code>:h texture2D()</code>, or just hit <code>K</code> while the cursor is on the function.</p>
+
+<blockquote>
+<p>If these don't work, you may need to update your help tags. See <code>:h helptags</code>
+for more information.</p>
+</blockquote>
 
 <h4>
 <a id="autocomplete" class="anchor" href="#autocomplete" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Autocomplete</h4>
@@ -97,17 +108,12 @@ to use omnicompletion instead (<code>ctrl-x</code> <code>ctrl-o</code>), add the
 
 <p>Distributed under the same terms as Vim. See <code>:help license</code>.</p>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">vim-glsl maintained by <a href="https://github.com/petrbroz">petrbroz</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/petrbroz">petrbroz</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-
+    <script src="javascripts/scale.fix.js"></script>
     
-
   </body>
 </html>
