@@ -8,32 +8,41 @@ Supported file extensions: `.glsl`, `.vs`, `.fs`
 
 ![Demo](https://github.com/petrbroz/vim-glsl/blob/gh-pages/images/screencast.gif?raw=true)
 
-## Requirements
-
-- [Vim 8](https://github.com/vim/vim/blob/master/runtime/doc/version8.txt)
-
 ## Installation
 
-Clone this repo in your Vim's package folder:
+* Using [pathogen](https://github.com/tpope/vim-pathogen)? Open your terminal and run:
 ```bash
-mkdir -p ~/.vim/pack
-cd ~/.vim/pack
-git clone git://github.com/petrbroz/vim-glsl.git
+cd ~/.vim/bundle && git clone git://github.com/petrbroz/vim-glsl.git
+```
+* Using [Vundle](https://github.com/VundleVim/Vundle.vim)? Open your _.vimrc_ and add:
+```vim
+Plugin 'petrbroz/vim-glsl'
+```
+* Using [NeoBundle](https://github.com/Shougo/neobundle.vim)?  Open your _.vimrc_ and add:
+```vim
+NeoBundle 'petrbroz/vim-glsl'
 ```
 
 ## Features
 
 #### Syntax highlighting
 
+Based on WebGL 1.0 [specs](https://www.khronos.org/registry/webgl/specs/latest/).
+Additionally, `#include` directives used in [three.js](https://github.com/mrdoob/three.js/)
+are also recognized.
+
 #### Code folding
 
-Based on cindent.
+Simply based on cindent.
 
 #### Reference documentation
 
 The built-in variables, constants, and functions of OpenGL ES GLSL are documented
 using vim's docs format, so you can look up the documentation using something like
 `:h texture2D()`, or just hit `K` while the cursor is on the function.
+
+> If these don't work, you may need to update your help tags. See `:h helptags`
+> for more information.
 
 #### Autocomplete
 
