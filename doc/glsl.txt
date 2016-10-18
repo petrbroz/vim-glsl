@@ -1,10 +1,11 @@
-*glsl.txt* Plugin for the glsl shader language
+*glsl.txt* utilities for webgl/glsl/three.js development
 
-Author: Petr Broz <https://github.com/petrbroz>
+Author: Petr Broz
+Version: 1.0.0
 License: Same as Vim's (see |license|)
 
 ================================================================================
 INTRODUCTION                                                          *vim-glsl*
 
-This plugin will automatically provide syntax highlighting for OpenGL ES 1.0
-shader files (files ending with .glsl, .vs, or .fs).
+This plugin provides several utilities for developers working with WebGL 1.0
+shader files. See https://github.com/petrbroz/vim-glsl for more details.
