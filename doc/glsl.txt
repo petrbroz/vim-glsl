@@ -1,7 +1,7 @@
 *glsl.txt* utilities for webgl/glsl/three.js development
 
 Author: Petr Broz
-Version: 1.0.0
+Version: 1.0.1
 License: Same as Vim's (see |license|)
 
 ================================================================================
@@ -9,3 +9,8 @@ INTRODUCTION                                                          *vim-glsl*
 
 This plugin provides several utilities for developers working with WebGL 1.0
 shader files. See https://github.com/petrbroz/vim-glsl for more details.
+
+================================================================================
+CHANGELOG
+
+See https://github.com/petrbroz/vim-glsl/releases.
