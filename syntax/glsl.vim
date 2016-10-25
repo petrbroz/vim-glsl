@@ -127,6 +127,7 @@ highlight link glslcomment Comment
 
 syntax match glsldefine "\v\# ?define.*$"
 syntax match glsldefine "\v\# ?if.*$"
+syntax match glsldefine "\v\# ?elif.*$"
 syntax match glsldefine "\v\# ?else.*$"
 syntax match glsldefine "\v\# ?endif.*$"
 syntax match glslinclude "\v\# ?include.*$"
